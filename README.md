@@ -1,2 +1,2 @@
 #chạy lệnh
-python manga.py runserver 
+python manage.py runserver 
