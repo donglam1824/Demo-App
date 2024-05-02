@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Sign Up</title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="">
+            <style>
+                h3 {
+                    color: #333;
+                    font-size: 36px; /* Tăng kích thước của tiêu đề */
+                    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+                }
+                button {
+                    padding: 10px 20px;         
+                    cursor: pointer;    
+                  }
+                body {
+                    display: flex; /* Cho phép canh giữa */
+                    flex-direction: column; /* Sắp xếp các form-row dọc */
+                    align-items: center;  /* Canh giữa các form-row */
+                    justify-content: center; /* Canh giữa các form-row dọc (nếu form chiếm chiều cao nhỏ hơn viewport) */
+                    min-height: 100vh; /* Đảm bảo body chiếm ít nhất 100% chiều cao cửa sổ */
+                    margin: 0; /* Xóa margin mặc định */
+                  }
+                  
+                  .form-row {
+                    display: flex;
+                    align-items: center;   /* Canh giữa label và input theo chiều dọc */
+                    margin-bottom: 15px;  /* Thêm khoảng cách giữa các hàng */
+                  }
+                  
+                  .form-row label {
+                    flex: 0 0 120px;   /* Chiều rộng cố định cho label */
+                    margin-right: 10px; 
+                  }
+                  
+                  .form-row input {
+                    flex: 1; /* Input chiếm toàn bộ phần còn lại */
+                    padding: 10px;  
+                    border: 1px solid #ccc;
+                    border-radius: 5px;  
+                  }
+                </style>
+        </head>
+        <body>
+            
+            <h3>Sign up</h3>
+            <form action="/signup" method="post">
+                {% csrf_token %}
+                 
+                <div class="form-row">
+                    <label for="">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Create a username"  Required>
+                <br>
+                </div>
+
+                <div class="form-row">
+                    <label for="">First Name</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Enter your firstname" Required>
+                <br>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Last name</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Enter your lastname" Required>
+                <br>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your Email" Required>
+                <br>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Password</label>
+                    <input type="password" id="password1" name="password1" placeholder="Enter your password" Required>
+                <br>
+                </div>
+
+                <div class="form-row">
+                    <label for="">Confirm your password</label>
+                    <input type="password" id="password2" name="password2" placeholder="Confirm your password" Required>
+                <br>
+                </div>
+
+                <button type="submit">Sign Up</button>
+            </form>
+            
+            <script src="" async defer></script>
+        </body>
+    </html>
