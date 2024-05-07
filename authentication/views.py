@@ -19,7 +19,7 @@ def home(request):
 
 def signup(request):
 
-    if request.method == "POST":
+    if request.method == 'POST':
         username = request.POST['username']
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
@@ -33,21 +33,24 @@ def signup(request):
         
         if User.objects.filter(email=email):
             messages.error(request, "Email already registered!")
-
+            return redirect('home')
 
         if len(username) < 6:
             messages.error(request, "Username must be at least 6 characters long.")
+            return redirect('home')
 
         if password1 != password2:
             messages.error(request, "Password didn't match!")
+            return redirect('home')
 
         if not username.isalnum():
             messages.error(request, "Username must be only contain numbers and letters!")
+            return redirect('home')
 
         myuser = User.objects.create_user(username, email, password1)
         myuser.first_name = firstname
         myuser.last_name = lastname 
-        myuser.is_active = False
+        myuser.is_active = True
 
         myuser.save()
 
@@ -61,7 +64,8 @@ def signup(request):
 
 def signin(request):
 
-    if request.method == "POST":
+    if request.method == 'POST':
+
         username = request.POST['username']
         password1 = request.POST['password1']
 
@@ -70,7 +74,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             firstname = user.first_name
-            return render(request, "authentication/index.html", {'firstname': firstname})
+            return render(request, "authentication/index.html", {"firstname": firstname})
         
         else:
             messages.error(request, "Bad Credentials!")
@@ -83,17 +87,5 @@ def signout(request):
     messages.success(request, "Logged out successfully")
     return redirect('home')
 
-def activate(request, uidb64, token):
-    try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        myuser = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
-        myuser = None
-    
-    if myuser is not None and generate_token.check_token(myuser, token):
-        myuser.is_active = True
-        myuser.save()
-        login(request, myuser)
-    else:
-        return render(request, 'activation_failed.html')
+
     
