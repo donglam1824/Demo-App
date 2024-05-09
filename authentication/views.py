@@ -19,7 +19,7 @@ def home(request):
 
 def signup(request):
 
-    if request.method == 'POST':
+    if request.method == 'POST':                #Nhan thong tin nguoi dung dang ky
         username = request.POST['username']
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
@@ -47,10 +47,10 @@ def signup(request):
             messages.error(request, "Username must be only contain numbers and letters!")
             return redirect('home')
 
-        myuser = User.objects.create_user(username, email, password1)
+        myuser = User.objects.create_user(username, email, password1)    #Du yeu cau, tao user moi
         myuser.first_name = firstname
         myuser.last_name = lastname 
-        myuser.is_active = True
+        myuser.is_active = True                                           #Dat trang thai la active          
 
         myuser.save()
 
@@ -64,14 +64,14 @@ def signup(request):
 
 def signin(request):
 
-    if request.method == 'POST':
+    if request.method == 'POST':    
 
         username = request.POST['username']
         password1 = request.POST['password1']
 
-        user = authenticate(username=username, password=password1)
+        user = authenticate(username=username, password=password1)          #Kiem tra thong tin duoc nhan vao
 
-        if user is not None:
+        if user is not None:                                                #Neu co trong database
             login(request, user)
             firstname = user.first_name
             return render(request, "authentication/index.html", {"firstname": firstname})
