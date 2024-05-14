@@ -7,68 +7,8 @@
         <title>Authentication</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <style>
-            /* Style cho tiêu đề */
-            h3 {
-                color: #333;
-                font-size: 36px; /* Tăng kích thước của tiêu đề */
-                margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
-            }
-    
-            /* Style cho các nút */
-            button {
-                background-color: #4CAF50;
-                width: 150px;
-                height: 40px;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                text-decoration: none;
-                margin-right: 10px; 
-                margin-bottom: 10px;
-                margin-top: 10px;/* Khoảng cách giữa các nút */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 15px 30px;      
-                cursor: pointer;
-            }
-    
-            button:last-child {
-                margin-right: 0; /* Xóa khoảng cách cho nút cuối cùng */
-            }
-    
-            button:hover {
-                background-color: #45a049;
-            }
-    
-            /* Style cho form alert */
-            .alert {
-                margin-bottom: 20px;
-                padding: 15px;
-                border-radius: 5px;
-            }
-    
-            .alert-success {
-                background-color: #d4edda;
-                border-color: #c3e6cb;
-                color: #155724;
-            }
-    
-            .alert-danger {
-                background-color: #f8d7da;
-                border-color: #f5c6cb;
-                color: #721c24;
-            }
-            .container {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-        </style>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'index_style.css' %}">
     </head>
     <body>
 
@@ -96,7 +36,7 @@
     </div>
     </body>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="static\jquery-3.5.1.slim.min.js"></script>   <!-- Nhung thu vien jquery phien ban 3.5.1 dang slim (gon nhe)-->
+    <script src="static\popper.min.js"></script>              <!-- Nhung thu vien popper.min.js-->
+    <script src="static\bootstrap.min.js"></script>           <!-- Nhung thu vien bootstrap.min.js-->  
 </html>

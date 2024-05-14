@@ -1,0 +1,31 @@
+h3 {
+    color: #333;
+    font-size: 36px; /* Tăng kích thước của tiêu đề */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+body {
+    display: flex; /* Cho phép canh giữa */
+    flex-direction: column; /* Sắp xếp các form-row dọc */
+    align-items: center;  /* Canh giữa các form-row */
+    justify-content: center; /* Canh giữa các form-row dọc (nếu form chiếm chiều cao nhỏ hơn viewport) */
+    min-height: 100vh; /* Đảm bảo body chiếm ít nhất 100% chiều cao cửa sổ */
+    margin: 0; /* Xóa margin mặc định */
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;   /* Canh giữa label và input theo chiều dọc */
+    margin-bottom: 15px;  /* Thêm khoảng cách giữa các hàng */
+  }
+  
+  .form-row label {
+    flex: 0 0 120px;   /* Chiều rộng cố định cho label */
+    margin-right: 10px; 
+  }
+  
+  .form-row input {
+    flex: 1; /* Input chiếm toàn bộ phần còn lại */
+    padding: 10px;  
+    border: 1px solid #ccc;
+    border-radius: 5px;  
+  }

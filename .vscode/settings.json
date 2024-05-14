@@ -4,9 +4,11 @@
         "firstname",
         "lastname",
         "myuser",
+        "phuclam",
         "pyexpat",
         "signin",
         "signout",
+        "simplejwt",
         "uidb"
     ]
 }
