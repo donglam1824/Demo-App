@@ -1,16 +1,19 @@
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from firstapp import settings
-from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from .tokens import generate_token
-from email.message import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import generics
+from django.contrib.auth.models import User
+from rest_framework.permissions import AllowAny
+from .serializers import UserSerializer, MyTokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
 
 
 # Create your views here.
@@ -82,10 +85,19 @@ def signin(request):
 
     return render(request, "authentication/signin.html")
 
+
 def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully")
     return redirect('home')
 
+class MyTokenObtainPairView(TokenObtainPairView):
+    permission_classes = (AllowAny,)
+    serializer_class = MyTokenObtainPairSerializer
+
+class UserCreateAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
     
